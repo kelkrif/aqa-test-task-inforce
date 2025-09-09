@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test:ui": "npx playwright test e2e/main.api.spec.ts --ui"
+    "test:ui": "npx playwright test e2e/main.api.spec.ts --ui",
+    "test-main:ui": "npx playwright test e2e/main.spec.ts --ui"
   },
   "keywords": [],
   "author": "",
