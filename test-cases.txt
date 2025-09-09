@@ -1,0 +1,64 @@
+====================================================
+Test Cases for Room Booking UI Flow
+====================================================
+
+ID: TC_UI_001
+Title: Verify that the room can be booked with valid data
+Preconditions:
+ - User is on the main booking page
+ - At least one room is available for the selected dates
+Steps:
+ 1. Select valid check-in and check-out dates in the date picker.
+ 2. Click the "Check Availability" button.
+ 3. Click the "Book Now" button that relates to the available room.
+ 4. In the room menu, click the "Reserve Now" button.
+ 5. Enter valid data into the required fields:
+    - Firstname
+    - Lastname
+    - Email
+    - Phone
+ 6. Click the "Reserve Now" button again.
+ 7. Verify that the confirmation submenu appears with the booking details (check-in and check-out dates).
+Expected Result:
+ - The room is successfully booked with the provided dates and user data.
+ - The confirmation submenu displays the correct booking period.
+
+----------------------------------------------------
+
+ID: TC_UI_002
+Title: Verify that the room can’t be booked with invalid data
+Preconditions:
+ - User is on the main booking page
+ - At least one room is available for the selected dates
+Steps:
+ 1. Select valid check-in and check-out dates in the date picker.
+ 2. Click the "Check Availability" button.
+ 3. Click the "Book Now" button that relates to the available room.
+ 4. In the room menu, click the "Reserve Now" button.
+ 5. Leave required fields empty OR enter invalid data:
+    - Empty Firstname/Lastname
+    - Invalid email (e.g., "test@")
+    - Invalid phone (e.g., "123abc")
+ 6. Click the "Reserve Now" button again.
+Expected Result:
+ - Validation error messages are displayed for each invalid or empty field.
+ - The booking is not confirmed until all fields contain valid data.
+
+----------------------------------------------------
+
+ID: TC_UI_003
+Title: Verify that earlier booked dates show as Unavailable
+Preconditions:
+ - At least one booking already exists for specific dates
+ - User is on the main booking page
+Steps:
+ 1. Select a range of dates that overlaps with already booked dates in the date picker.
+ 2. Click the "Check Availability" button.
+ 3. Observe the calendar and the room list.
+Expected Result:
+ - The room does not appear in the list of available rooms.
+ - In the calendar view, the booked dates are displayed with the element:
+   <div class="rbc-event-content" title="Unavailable">Unavailable</div>
+ - User cannot proceed with booking for those dates.
+
+====================================================
