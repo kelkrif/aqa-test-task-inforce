@@ -1,26 +1,56 @@
-# AQA Test Task - Inforce
+# AQA Test Task (Playwright + TypeScript)
 
-## Setup and Run Tests
+Нижче — **проста інструкція**, як встановити залежності та запустити тести локально.
 
-### Prerequisites
+## Вимоги
+- **Node.js** v18 або новіше (рекомендовано LTS)
+- **npm** (йде разом із Node.js)
+- Доступ до інтернету (тести працюють з сайтом `https://automationintesting.online/`)
 
-- Node.js (LTS version)
-- npm
+## Установка
+```bash
+# 1) Встановити залежності
+npm install
 
-### Installation
+# 2) Встановити браузери Playwright
+npx playwright install
+```
+> Якщо команда вище попросить додаткові залежності для вашої ОС — встановіть їх за підказкою.
 
-1. Clone the repository:
+## Запуск тестів
+> У репозиторії є як **UI-тести**, так і **API-тести**.
+- Запустити **всі** тести:
+```bash
+npx playwright test
+```
+- Запустити **тільки UI-тести**:
+```bash
+npx playwright test e2e/main.spec.ts
+```
+- Запустити **тільки API-тест**:
+```bash
+npx playwright test e2e/main.api.spec.ts
+```
+- Запустити у **Playwright UI Mode** (зручний перегляд/дебаг):
+```bash
+npm run test:ui
+```
+> Цей скрипт за замовчуванням відкриває `e2e/main.api.spec.ts`. За потреби відредагуйте поле `scripts` у `package.json`.
 
-   ```bash
-   git clone https://github.com/kelkrif/aqa-test-task-inforce.git
-   cd aqa-test-task-inforce
+## Звіти
+Після прогона доступний HTML-звіт:
+```bash
+npx playwright show-report
+```
 
-2. Install dependencies:
-    ```bash
-    npm install
-
-3. Running Tests
-
-Execute the tests with:
-   ```bash
-    npx playwright test-main:ui
+## Структура
+```
+e2e/
+  api/                # helper для API-запитів (створення/перевірка/видалення кімнати)
+  constants/          # URL-и та тестові дані
+  pages/              # Page Object-и для UI
+  main.spec.ts        # e2e UI-сценарії бронювання
+  main.api.spec.ts    # API-сценарій створення/перевірки кімнати
+playwright.config.ts  # конфіг Playwright (браузери, репорти тощо)
+package.json          # залежності та npm-скрипти
+```
